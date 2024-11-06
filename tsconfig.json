@@ -1,0 +1,10 @@
+{
+    "extends": "@pr/eslint-config/typescript-base.json",
+    "compilerOptions": {
+      "jsx": "react",
+      "paths": {
+        "@/*": ["./packages/ui/*"]
+      }
+    }
+  }
+  

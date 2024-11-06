@@ -1,0 +1,13 @@
+{
+    "delete": true,
+    "directory": [
+      "./packages/api/src",
+      "./packages/ui/src",
+      "./packages/services/src"
+    ],
+  
+    "exclude": [],
+    "location": "all",
+    "singleQuotes": true
+  }
+  

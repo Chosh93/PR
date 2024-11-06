@@ -1,81 +1,73 @@
-# Turborepo starter
+###### ##### ##### #####
+# 개인 경력 등록 사이트 #
+###### ##### ##### #####
 
-This is an official starter Turborepo.
+## 사용된 기술스펙
+pnpm
+https://pnpm.io/
 
-## Using this example
+Turborepo
+https://turbo.build/
 
-Run the following command:
+Next.js
+https://nextjs.org/
 
-```sh
-npx create-turbo@latest
+Docs - 주석으로 대체
+
+## 적용 고민 기술스펙
+Husky - 커밋, 빌드 시 타입오류 및 코드 결과를 미리 도출하여
+        fail 시 커밋, 푸쉬, 빌드 방지
+        sucess 만 통과
+https://typicode.github.io.husky/
+
+스토리북 - 공통 컴포넌트만 예시로 정리해 보여줄 수 있음.
+
+Mantine UI, tailwind, ant design 회의 후 결정
+
+## 개발환경 버전
+```
+node --version
+v18.15.0
+
+pnpm --version
+9.12.3
 ```
 
-## What's inside?
+## 패키지 설치
+pnpm install
 
-This Turborepo includes the following packages/apps:
+## App 실행
+pnpm local:desktop
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## 프로젝트 구조
 
 ```
-cd my-turborepo
-pnpm build
+root
+├── .husky : 커밋시 빌드 통과 용 등으로 사용
+├── apps
+│   ├── desktop : 사용자 PC 버전 프로젝트
+│   ├── mobile : 사용자 Mobile 버전 프로젝트
+│   └── storybook : 스토리북 프로젝트
+├── packages
+│   ├── api : 백앤드에서 개발한 api 연동 프로젝트
+│   ├── ckeditor5 : html editor 로 ckeditor5 를 사용하며
+│   │               연동하기 위한 프로젝트
+│   ├── eslint-config : 공통으로 eslint & typescript 설정을
+│   │                   사용하기 위한 프로젝트
+│   ├── service : 공통으로 사용될 로직 프로젝트
+│   │   ├── hooks : 커스텀 훅
+│   │   ├── model : 백엔드 <> 프론트 간 api 타입 매칭 관리
+│   │   ├── store : 상태 관리 라이브러리 (zustand) 관리
+│   │   ├── utils : 공통으로 사용 될 함수 관리
+│   └── ui : 공통으로 사용될 컴포넌트 모음 프로젝트
+├── .env.local : 로컬 환경 변수
+├── .eslintrc.js : eslint 설정 파일
+├── .gitignore : git 무시 파일
+├── .npmrc : node package manager 파일
+├── .prettierrc : prettier 설정 파일
+├── barrels-config.json : 배럴 설정 파일
+├── tsconfig.json : 타입스크립트 설정 파일
+└── turbo.json : turborepo 설정 파일
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+참고요~

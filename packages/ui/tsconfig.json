@@ -1,7 +1,15 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@pr/eslint-config/typescript-react.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "#/*": ["./src/*"],
+      "#api/*": ["../api/src/*"],
+      "#services/*": ["../services/src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

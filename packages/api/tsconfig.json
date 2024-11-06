@@ -1,0 +1,16 @@
+{
+    "extends": "@pr/eslint-config/typescript-react.json",
+    "compilerOptions": {
+      "outDir": "dist",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "paths": {
+        "#/*": ["../ui/src/*"],
+        "#api/*": ["./src/*"]
+      }
+    },
+    "include": ["src", "src/**/*", "src/**/**/*", "axios.d.ts"],
+    "exclude": ["node_modules", "dist"]
+  }
+  

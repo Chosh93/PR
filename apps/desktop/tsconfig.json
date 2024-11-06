@@ -1,0 +1,28 @@
+{
+  "extends": "@pr/eslint-config/typescript-next.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "#/*": ["../../packages/ui/src/*"],
+      "#api/*": ["../../packages/api/src/*"],
+      "#services/*": ["../../packages/services/src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true,
+    "declaration": false
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../packages/api/**/*.ts",
+    "../../packages/services/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

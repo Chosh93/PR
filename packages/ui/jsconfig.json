@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "paths": {
+        "#/*": ["./src/*"],
+        "#api/*": ["../api/src/*"],
+        "#services/*": ["../services/src/*"]
+      }
+    }
+  }
+  

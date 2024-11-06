@@ -1,16 +1,18 @@
 {
-  "name": "PR",
+  "name": "pr",
   "private": true,
   "scripts": {
+    "local:desktop": "pnpm install && turbo local:desktop",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate-barrels": "npx barrelsby --config barrels-config.json"
   },
   "devDependencies": {
+    "@pr/eslint-config": "workspace:*",
     "prettier": "^3.2.5",
-    "turbo": "^2.2.3",
-    "typescript": "5.5.4"
+    "turbo": "^2.2.3"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {

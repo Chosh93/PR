@@ -1,0 +1,15 @@
+{
+    // "extends": "@pr/typescript-config/react-library.json",
+    "compilerOptions": {
+      "outDir": "dist",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "paths": {
+        "#api/*": ["./src/*"]
+      }
+    },
+    "include": ["src", "src/**/*", "src/**/**/*", "axios.d.ts", "turbo"],
+    "exclude": ["node_modules", "dist"]
+  }
+  
