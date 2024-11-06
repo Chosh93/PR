@@ -14,20 +14,20 @@ https://nextjs.org/
 
 Docs - 주석으로 대체
 
-## 적용 고민 기술스펙
-Husky - 커밋, 빌드 시 타입오류 및 코드 결과를 미리 도출하여
-        fail 시 커밋, 푸쉬, 빌드 방지
-        sucess 만 통과
+Husky 8.0.3
+- 커밋, 빌드 시 타입오류 및 코드 결과를 미리 도출하여
+fail 시 커밋, 푸쉬, 빌드 방지 sucess 만 통과
 https://typicode.github.io.husky/
 
-스토리북 - 공통 컴포넌트만 예시로 정리해 보여줄 수 있음.
+Mantine UI
 
-Mantine UI, tailwind, ant design 회의 후 결정
+## 적용 고민 기술스펙
+스토리북 - 공통 컴포넌트만 예시로 정리해 보여줄 수 있음.
 
 ## 개발환경 버전
 ```
 node --version
-v18.15.0
+v18.17.0
 
 pnpm --version
 9.12.3
