@@ -9,11 +9,6 @@
       "cache": false,
       "persistent": true
     },
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
     "lint": {
       "dependsOn": ["^lint"]
     },
@@ -26,6 +21,14 @@
       "dependsOn": [
         "^barrels"
       ]
+    },
+    "build": {
+      "dependsOn": [
+        "barrels",
+        "lint"
+      ],
+      "cache": false,
+      "persistent": false
     }
   }
 }

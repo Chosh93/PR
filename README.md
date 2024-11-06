@@ -69,5 +69,3 @@ root
 ├── tsconfig.json : 타입스크립트 설정 파일
 └── turbo.json : turborepo 설정 파일
 ```
-
-참고요~asdfasdf
