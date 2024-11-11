@@ -14,7 +14,7 @@ export const PRInput = ({
     onChange
 }: PRInputProps) => {
     const [inputValue, setInputValue] = useState<string | number>('');
-    const [isShowPassword, setIsShowPassWord] = useState<boolean>(false);
+    // const [isShowPassword, setIsShowPassWord] = useState<boolean>(false);
 
     const onChangeValue = (_value: string | number) => {
         setInputValue(_value);

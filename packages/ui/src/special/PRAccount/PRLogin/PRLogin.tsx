@@ -18,7 +18,7 @@ export const PRLogin = ({ router, onClick }: PRLoginInputProps) => {
             </Box>
             <Box>
                 <Text>회원이 아니세요?</Text>
-                <PRButton label="회원가입" onClick={() => router.push('/signup')}/>
+                <PRButton label="회원가입" onClick={() => router.push('/account/signUp')}/>
             </Box>
         </Box>
     );
