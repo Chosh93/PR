@@ -10,7 +10,7 @@ const signUp = () => {
     
     return (
         <>
-        <span>추후 개발 예정</span>
+        <span>추후 개발 예정zzzzzzzzz</span>
         </>
     );
 };
