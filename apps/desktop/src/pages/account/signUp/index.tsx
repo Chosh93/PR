@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { PRSignUp } from "#/special";
 
 /** 
  * 회원가입
@@ -10,7 +11,7 @@ const signUp = () => {
     
     return (
         <>
-        <span>추후 개발 예정zzzzzzzzz</span>
+            <PRSignUp router={router}/>
         </>
     );
 };
