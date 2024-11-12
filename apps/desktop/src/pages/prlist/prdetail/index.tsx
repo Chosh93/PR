@@ -1,8 +1,10 @@
 import React from "react";
 
-export const prdetail = () => {
+const prdetail = () => {
     console.log('dd');
     return (
         <></>
     );
 };
+
+export default prdetail;
