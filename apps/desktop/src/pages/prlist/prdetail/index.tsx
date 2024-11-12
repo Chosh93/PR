@@ -1,7 +1,7 @@
 import React from "react";
 
 const prdetail = () => {
-    console.log('dd');
+    console.log('ddsssssss');
     return (
         <></>
     );
