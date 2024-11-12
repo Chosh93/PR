@@ -1,7 +1,7 @@
 import React from "react";
 
 const prdetail = () => {
-    console.log('ddsssssss');
+    console.log('다시체크');
     return (
         <></>
     );
