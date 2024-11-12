@@ -69,3 +69,19 @@ root
 ├── tsconfig.json : 타입스크립트 설정 파일
 └── turbo.json : turborepo 설정 파일
 ```
+
+
+
+## Git 규칙
+추가 add
+삭제 del
+수정 mod
+
+sh/add/page/추가한페이지 이름
+sh/add/component/추가한 컴포넌트 이름
+sh/del/page/삭제한 페이지 이름
+sh/del/component/삭제한 페이지 컴포넌트 이름
+sh/mod/page/수정한 페이지 이름
+sh/mod/component/수정한 컴포넌트 이름
+
+동일한 페이지나 컴포넌트 수정 및 작업 시 1,2,3,4
