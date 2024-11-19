@@ -2,7 +2,10 @@ import React from 'react';
 
 import { useRouter } from 'next/router';
 
+import { postLogin } from '@pr/api';
 import { PRLogin } from '@pr/ui';
+
+import { LoginRequest } from '#api/model/fe';
 
 /**
  * 로그인
@@ -10,27 +13,45 @@ import { PRLogin } from '@pr/ui';
  */
 const Login = () => {
   const router = useRouter();
-  console.log('123');
-  const loginClick = () => {
-    // TODO: 실제 api 호출 대체
-    // 임시 로그인 처리
-    const loginResponse = {
-      success: true,
-      user: {
-        id: 1,
-        name: '홍길동',
-      },
-    };
-    if (loginResponse.success) {
-      router.push('/');
-    } else {
-      alert('로그인 실패');
+  const doLogin = async (param: LoginRequest) => {
+    if (param.userId && param.userPw) {
+      try {
+        const { result } = await postLogin(param);
+        console.log(123);
+        console.log(result.isLogin);
+        if (result.isLogin) {
+          router.push('/');
+        } else {
+          console.log(result.messages);
+          window.$alert.open({
+            title: '로그인 실패',
+            children: (
+              <span>
+                로그인에 실패하였습니다.
+                <br />
+                아이디 / 패스워드를 확인하세요.
+              </span>
+            ),
+          });
+        }
+      } catch (error) {
+        window.$alert.open({
+          title: '로그인 실패',
+          children: (
+            <span>
+              로그인에 실패하였습니다.
+              <br />
+              아이디 / 패스워드를 확인하세요.
+            </span>
+          ),
+        });
+      }
     }
   };
 
   return (
     <>
-      <PRLogin router={router} onClick={loginClick} />
+      <PRLogin router={router} onClick={doLogin} />
     </>
   );
 };

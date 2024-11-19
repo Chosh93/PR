@@ -9,18 +9,21 @@
         ".": "./index.ts"
     },
     "scripts": {
-        "fetch:fe": "openapi-generator generate -i https://opencia-api-dev.ybtour.co.kr/v3/api-docs/frontend -g typescript-axios -o ./src/model/fe --skip-validate-spec"
+        "fetch:fe": "pnpm exec openapi-generator generate -i http://localhost:8111/v3/api-docs -g typescript-axios -o ./src/model/fe --skip-validate-spec"
     },
     "dependencies": {
         "@pr/services": "workspace:^",
         "axios": "^1.6.7",
         "axios-mock-adapter": "^1.22.0",
+        "cookie": "^0.6.0",
         "react": "^18.2.0",
+        "react-cookie": "^7.1.4",
         "react-error-boundary": "^4.0.12",
         "react-query": "^3.39.3"
     },
     "devDependencies": {
         "@openapitools/openapi-generator-cli": "^2.13.4",
+        "@types/cookie": "^0.6.0",
         "@types/react": "^18.2.46",
         "@pr/eslint-config": "workspace:*",
         "typescript": "^5.3.3"
