@@ -4,3 +4,5 @@
 
 export * from './PRInput';
 export * from './PRButton';
+export * from './PRAlertModal';
+export * from './PRModal';

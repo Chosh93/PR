@@ -1,50 +1,58 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Group, TextInput } from "@mantine/core";
+import { Group, PasswordInput, TextInput } from '@mantine/core';
 
 export interface PRInputProps {
-    type?: 'normal' | 'password';
-    placeholder?: string;
-    onChange?: (value: string | number) => void;
+  type?: 'normal' | 'password';
+  placeholder?: string;
+  onChange?: (value: string | number) => void;
 }
 
-export const PRInput = ({
-    type = 'normal',
-    placeholder,
-    onChange
-}: PRInputProps) => {
-    const [inputValue, setInputValue] = useState<string | number>('');
-    // const [isShowPassword, setIsShowPassWord] = useState<boolean>(false);
+export const PRInput = ({ type = 'normal', placeholder, onChange }: PRInputProps) => {
+  const [inputValue, setInputValue] = useState<string | number>('');
+  // const [isShowPassword, setIsShowPassWord] = useState<boolean>(false);
 
-    const onChangeValue = (_value: string | number) => {
-        setInputValue(_value);
-        return onChange && onChange(_value);
-    };
+  const onChangeValue = (_value: string | number) => {
+    setInputValue(_value);
+    return onChange && onChange(_value);
+  };
 
-    const normalInput = (
-        <>
-            <TextInput
-                value={inputValue}
-                onChange={(e) => onChangeValue(e.target.value)}
-                placeholder={placeholder}
-            />
-        </>
-    );
+  const normalInput = (
+    <>
+      <TextInput
+        label="ID"
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={(e) => onChangeValue(e.target.value)}
+      />
+    </>
+  );
 
-    const renderDom = () => {
-        switch (type) {
-            case 'normal':
-                return normalInput;
-            default:
-                return <></>;
-        }
-    };
+  const passwordInput = (
+    <>
+      <PasswordInput
+        label="Password"
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={(e) => onChangeValue(e.target.value)}
+      />
+    </>
+  );
 
-    return (
-        <div>
-            <Group>
-                {renderDom()}
-            </Group>
-        </div>
-    );
+  const renderDom = () => {
+    switch (type) {
+      case 'normal':
+        return normalInput;
+      case 'password':
+        return passwordInput;
+      default:
+        return <></>;
+    }
+  };
+
+  return (
+    <div>
+      <Group>{renderDom()}</Group>
+    </div>
+  );
 };

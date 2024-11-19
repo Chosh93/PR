@@ -9,7 +9,7 @@
         "#api/*": ["./src/*"]
       }
     },
-    "include": ["src", "src/**/*", "src/**/**/*", "axios.d.ts", "turbo"],
+    "include": ["src", "src/**/*", "src/**/**/*", "axios.d.ts", "turbo", "index.d.ts"],
     "exclude": ["node_modules", "dist"]
   }
   

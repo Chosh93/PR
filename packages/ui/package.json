@@ -41,6 +41,7 @@
     "mantine-datatable": "^7.6.1",
     "mantine-react-table": "^1.3.4",
     "react-calendar": "^5.0.0",
+    "react-player": "^2.16.0",
     "recharts": "2",
     "swiper": "^11.0.7"
   },
