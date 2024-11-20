@@ -4,11 +4,12 @@ import { Group, PasswordInput, TextInput } from '@mantine/core';
 
 export interface PRInputProps {
   type?: 'normal' | 'password';
+  label: string;
   placeholder?: string;
   onChange?: (value: string | number) => void;
 }
 
-export const PRInput = ({ type = 'normal', placeholder, onChange }: PRInputProps) => {
+export const PRInput = ({ type = 'normal', label, placeholder, onChange }: PRInputProps) => {
   const [inputValue, setInputValue] = useState<string | number>('');
   // const [isShowPassword, setIsShowPassWord] = useState<boolean>(false);
 
@@ -20,7 +21,7 @@ export const PRInput = ({ type = 'normal', placeholder, onChange }: PRInputProps
   const normalInput = (
     <>
       <TextInput
-        label="ID"
+        label={label}
         placeholder={placeholder}
         value={inputValue}
         onChange={(e) => onChangeValue(e.target.value)}
@@ -31,7 +32,7 @@ export const PRInput = ({ type = 'normal', placeholder, onChange }: PRInputProps
   const passwordInput = (
     <>
       <PasswordInput
-        label="Password"
+        label={label}
         placeholder={placeholder}
         value={inputValue}
         onChange={(e) => onChangeValue(e.target.value)}
