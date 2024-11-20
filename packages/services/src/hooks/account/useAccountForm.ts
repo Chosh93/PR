@@ -1,22 +1,27 @@
-import { matches, useForm } from '@mantine/form';
-
-import { korPattern, passwordPattern } from '#services/utils';
+import { useForm } from '@mantine/form';
 
 import { PRLoginForm } from '#/special';
 
 export const useAccountForm = () => {
-  const form = useForm({
+  const loginForm = useForm({
     initialValues: {
       userId: '',
       userPw: '',
     } as PRLoginForm,
-    validate: {
-      userId: matches(korPattern, '이름을 입력해 주세요.'),
-      userPw: matches(passwordPattern, '패스워드를 입력해 주세요.'),
+  });
+
+  const signUpForm = useForm({
+    initialValues: {
+      userId: '',
+      userPw: '',
+      userName: '',
+      userEmail: '',
+      userPhone: '',
     },
   });
 
   return {
-    form,
+    loginForm,
+    signUpForm,
   };
 };

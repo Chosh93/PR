@@ -17,12 +17,9 @@ const Login = () => {
     if (param.userId && param.userPw) {
       try {
         const { result } = await postLogin(param);
-        console.log(123);
-        console.log(result.isLogin);
         if (result.isLogin) {
           router.push('/');
         } else {
-          console.log(result.messages);
           window.$alert.open({
             title: '로그인 실패',
             children: (

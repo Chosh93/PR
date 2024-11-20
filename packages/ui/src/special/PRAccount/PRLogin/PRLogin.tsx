@@ -12,10 +12,10 @@ export interface PRLoginInputProps {
 }
 
 export const PRLogin = ({ router, onClick }: PRLoginInputProps) => {
-  const { form } = useAccountForm();
+  const { loginForm } = useAccountForm();
 
   const onLogin = () => {
-    onClick(form.values); // 검증된 폼 데이터로 로그인 요청
+    onClick(loginForm.values); // 검증된 폼 데이터로 로그인 요청
   };
 
   return (
@@ -28,13 +28,15 @@ export const PRLogin = ({ router, onClick }: PRLoginInputProps) => {
         <Box>
           <PRInput
             type="normal"
+            label="ID"
             placeholder="아이디를 입력해 주세요."
-            onChange={(value) => form.setFieldValue('userId', value as string)}
+            onChange={(value) => loginForm.setFieldValue('userId', value as string)}
           />
           <PRInput
             type="password"
+            label="Password"
             placeholder="비밀번호를 입력해 주세요."
-            onChange={(value) => form.setFieldValue('userPw', String(value))}
+            onChange={(value) => loginForm.setFieldValue('userPw', String(value))}
           />
           <PRButton label="로그인" onClick={onLogin} />
           <PRButton label="회원가입" onClick={() => router.push('/account/signUp')} />

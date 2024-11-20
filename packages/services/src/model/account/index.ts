@@ -1,14 +1,23 @@
-import { LoginResponse } from '#api/model/fe';
+import { LoginResponse, SignUpResponse } from '#api/model/fe';
 
-import { PRLoginResponseProps } from '#/index';
+import { PRLoginResponseProps, PRSignUpResponseProps } from '#/index';
 
 export const accountModel = {
   parseLogin(data: LoginResponse) {
-    console.log(data);
     const result = {
       isLogin: data.success,
       messages: data.message,
     } as PRLoginResponseProps;
+    return {
+      result,
+    };
+  },
+
+  parseSignUp(data: SignUpResponse) {
+    const result = {
+      isSignUp: data.success,
+      messages: data.message,
+    } as PRSignUpResponseProps;
     return {
       result,
     };

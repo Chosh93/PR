@@ -61,6 +61,62 @@ export interface LoginResponse {
      */
     'message'?: string;
 }
+/**
+ * 
+ * @export
+ * @interface SignUpRequest
+ */
+export interface SignUpRequest {
+    /**
+     * 사용자 ID
+     * @type {string}
+     * @memberof SignUpRequest
+     */
+    'userId'?: string;
+    /**
+     * 사용자 PW
+     * @type {string}
+     * @memberof SignUpRequest
+     */
+    'userPw'?: string;
+    /**
+     * 사용자 이름
+     * @type {string}
+     * @memberof SignUpRequest
+     */
+    'userName'?: string;
+    /**
+     * 사용자 Email
+     * @type {string}
+     * @memberof SignUpRequest
+     */
+    'userEmail'?: string;
+    /**
+     * 사용자 Phone
+     * @type {string}
+     * @memberof SignUpRequest
+     */
+    'userPhone'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SignUpResponse
+ */
+export interface SignUpResponse {
+    /**
+     * 회원가입 성공 여부
+     * @type {boolean}
+     * @memberof SignUpResponse
+     */
+    'success'?: boolean;
+    /**
+     * 응답 메세지
+     * @type {string}
+     * @memberof SignUpResponse
+     */
+    'message'?: string;
+}
 
 /**
  * DefaultApi - axios parameter creator
@@ -69,7 +125,7 @@ export interface LoginResponse {
 export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 로그인을 진행합니다.
+         * 
          * @summary 로그인
          * @param {LoginRequest} loginRequest 
          * @param {*} [options] Override http request option.
@@ -104,6 +160,42 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary 회원가입
+         * @param {SignUpRequest} signUpRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        signUp: async (signUpRequest: SignUpRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'signUpRequest' is not null or undefined
+            assertParamExists('signUp', 'signUpRequest', signUpRequest)
+            const localVarPath = `/api/account/signUp`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(signUpRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -115,7 +207,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
     return {
         /**
-         * 로그인을 진행합니다.
+         * 
          * @summary 로그인
          * @param {LoginRequest} loginRequest 
          * @param {*} [options] Override http request option.
@@ -125,6 +217,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.login(loginRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.login']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary 회원가입
+         * @param {SignUpRequest} signUpRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async signUp(signUpRequest: SignUpRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SignUpResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.signUp(signUpRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.signUp']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -138,7 +243,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = DefaultApiFp(configuration)
     return {
         /**
-         * 로그인을 진행합니다.
+         * 
          * @summary 로그인
          * @param {LoginRequest} loginRequest 
          * @param {*} [options] Override http request option.
@@ -146,6 +251,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         login(loginRequest: LoginRequest, options?: RawAxiosRequestConfig): AxiosPromise<LoginResponse> {
             return localVarFp.login(loginRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary 회원가입
+         * @param {SignUpRequest} signUpRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        signUp(signUpRequest: SignUpRequest, options?: RawAxiosRequestConfig): AxiosPromise<SignUpResponse> {
+            return localVarFp.signUp(signUpRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -158,7 +273,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
  */
 export class DefaultApi extends BaseAPI {
     /**
-     * 로그인을 진행합니다.
+     * 
      * @summary 로그인
      * @param {LoginRequest} loginRequest 
      * @param {*} [options] Override http request option.
@@ -167,6 +282,18 @@ export class DefaultApi extends BaseAPI {
      */
     public login(loginRequest: LoginRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).login(loginRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary 회원가입
+     * @param {SignUpRequest} signUpRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public signUp(signUpRequest: SignUpRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).signUp(signUpRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
