@@ -4,3 +4,4 @@
 
 export * from './PRAccount';
 export * from './PRList';
+export * from './PRUserProfile';
