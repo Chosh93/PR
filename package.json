@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "local:desktop": "pnpm install && turbo local:desktop",
-    "build": "turbo build",
+    "build": "pnpm install && turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

@@ -2,7 +2,7 @@
   {
     "username": "유저1",
     "jobObjective": "풀스택",
-    "topics": [
+    "projects": [
       {
         "title": "AA 프로젝트",
         "period": "2023.01 - 2023.06",
@@ -29,12 +29,12 @@
       }
     ],
     "profileImage": "https://via.placeholder.com/150",
-    "summary": "빠르게 성장하는 풀스택 개발자입니다."
+    "introduction": "빠르게 성장하는 풀스택 개발자입니다."
   },
   {
     "username": "유저2",
     "jobObjective": "프론트엔드",
-    "topics": [
+    "projects": [
       {
         "title": "CC 프로젝트",
         "period": "2022.06 - 2023.02",
@@ -43,12 +43,12 @@
       }
     ],
     "profileImage": "https://via.placeholder.com/150",
-    "summary": "창의적이고 효율적인 프론트엔드 개발자입니다."
+    "introduction": "창의적이고 효율적인 프론트엔드 개발자입니다."
   },
   {
     "username": "유저3",
     "jobObjective": "백엔드",
-    "topics": [
+    "projects": [
       {
         "title": "DD 프로젝트",
         "period": "2021.05 - 2021.12",
@@ -57,12 +57,12 @@
       }
     ],
     "profileImage": "https://via.placeholder.com/150",
-    "summary": "효율적인 시스템 구축을 목표로 하는 백엔드 개발자입니다."
+    "introduction": "효율적인 시스템 구축을 목표로 하는 백엔드 개발자입니다."
   },
   {
     "username": "유저4",
     "jobObjective": "백엔드2",
-    "topics": [
+    "projects": [
       {
         "title": "fdfd 프로젝트",
         "period": "2021.05 - 2021.12",
@@ -71,12 +71,12 @@
       }
     ],
     "profileImage": "https://via.placeholder.com/150",
-    "summary": "효율적인 시스템 구축을 목표로 하는 백엔드 개발자입니다."
+    "introduction": "효율적인 시스템 구축을 목표로 하는 백엔드 개발자입니다."
   },
   {
     "username": "유저5",
     "jobObjective": "백엔드2",
-    "topics": [
+    "projects": [
       {
         "title": "fdfd 프로젝트",
         "period": "2021.05 - 2021.12",
@@ -85,6 +85,6 @@
       }
     ],
     "profileImage": "https://via.placeholder.com/150",
-    "summary": "효율적인 시스템 구축을 목표로 하는 백엔드 개발자입니다."
+    "introduction": "효율적인 시스템 구축을 목표로 하는 백엔드 개발자입니다."
   }
 ]

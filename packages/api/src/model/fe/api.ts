@@ -26,6 +26,44 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerM
 /**
  * 
  * @export
+ * @interface AccountProfile
+ */
+export interface AccountProfile {
+    /**
+     * 유저 아이디
+     * @type {string}
+     * @memberof AccountProfile
+     */
+    'userId'?: string;
+    /**
+     * 유저 이름
+     * @type {string}
+     * @memberof AccountProfile
+     */
+    'userName'?: string;
+    /**
+     * 전체 유저 프로필
+     * @type {Array<ProfileDetails>}
+     * @memberof AccountProfile
+     */
+    'profiles'?: Array<ProfileDetails>;
+}
+/**
+ * 전체 프로필 응답 객체
+ * @export
+ * @interface AllProfileResponse
+ */
+export interface AllProfileResponse {
+    /**
+     * 
+     * @type {Array<AccountProfile>}
+     * @memberof AllProfileResponse
+     */
+    'profiles'?: Array<AccountProfile>;
+}
+/**
+ * 
+ * @export
  * @interface LoginRequest
  */
 export interface LoginRequest {
@@ -43,7 +81,7 @@ export interface LoginRequest {
     'userPw'?: string;
 }
 /**
- * 
+ * 로그인 응답 객체
  * @export
  * @interface LoginResponse
  */
@@ -60,6 +98,62 @@ export interface LoginResponse {
      * @memberof LoginResponse
      */
     'message'?: string;
+}
+/**
+ * 유저 프로필
+ * @export
+ * @interface ProfileDetails
+ */
+export interface ProfileDetails {
+    /**
+     * 프로젝트 타이틀
+     * @type {string}
+     * @memberof ProfileDetails
+     */
+    'title'?: string;
+    /**
+     * 프로젝트 기간
+     * @type {string}
+     * @memberof ProfileDetails
+     */
+    'period'?: string;
+    /**
+     * 프로젝트 역할
+     * @type {string}
+     * @memberof ProfileDetails
+     */
+    'role'?: string;
+    /**
+     * 사용 기술
+     * @type {Array<string>}
+     * @memberof ProfileDetails
+     */
+    'technologies'?: Array<string>;
+}
+/**
+ * 프로필 응답 객체
+ * @export
+ * @interface ProfileResponse
+ */
+export interface ProfileResponse {
+    /**
+     * 유저 아이디
+     * @type {string}
+     * @memberof ProfileResponse
+     */
+    'userId'?: string;
+    /**
+     * 유저 이름
+     * @type {string}
+     * @memberof ProfileResponse
+     */
+    'userName'?: string;
+    /**
+     * 유저 프로필
+     * @type {Array<ProfileDetails>}
+     * @memberof ProfileResponse
+     */
+    'profiles'?: Array<ProfileDetails>;
 }
 /**
  * 
@@ -99,7 +193,7 @@ export interface SignUpRequest {
     'userPhone'?: string;
 }
 /**
- * 
+ * 회원가입 응답 객체
  * @export
  * @interface SignUpResponse
  */
@@ -124,6 +218,70 @@ export interface SignUpResponse {
  */
 export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary 전체유저 프로필 가져오기
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllProfile: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/profile/all`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary 유저 프로필 가져오기
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserProfile: async (userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('getUserProfile', 'userId', userId)
+            const localVarPath = `/api/profile/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary 로그인
@@ -208,6 +366,31 @@ export const DefaultApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary 전체유저 프로필 가져오기
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllProfile(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AllProfileResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllProfile(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getAllProfile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary 유저 프로필 가져오기
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserProfile(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProfileResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserProfile(userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getUserProfile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary 로그인
          * @param {LoginRequest} loginRequest 
          * @param {*} [options] Override http request option.
@@ -244,6 +427,25 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary 전체유저 프로필 가져오기
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllProfile(options?: RawAxiosRequestConfig): AxiosPromise<AllProfileResponse> {
+            return localVarFp.getAllProfile(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary 유저 프로필 가져오기
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserProfile(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<ProfileResponse> {
+            return localVarFp.getUserProfile(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary 로그인
          * @param {LoginRequest} loginRequest 
          * @param {*} [options] Override http request option.
@@ -272,6 +474,29 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
+    /**
+     * 
+     * @summary 전체유저 프로필 가져오기
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getAllProfile(options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getAllProfile(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary 유저 프로필 가져오기
+     * @param {string} userId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getUserProfile(userId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getUserProfile(userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary 로그인

@@ -8,7 +8,7 @@ export interface Project {
 export interface UserProfile {
   username: string; // 유저 이름
   jobObjective: string;
-  topics: Project[]; // 진행한 프로젝트들
+  projects: Project[]; // 진행한 프로젝트들
   profileImage: string; // 프로필 이미지
-  summary: string; // 한줄 소개
+  introduction: string; // 한줄 소개
 }
