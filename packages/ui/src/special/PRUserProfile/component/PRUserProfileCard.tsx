@@ -25,10 +25,10 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
             {user.jobObjective}
           </Badge>
           <Text size="md" mt="sm" component="span">
-            {user.summary}
+            {user.introduction}
             <br />
             <Text size="sm" mt="sm" component="span">
-              최근프로젝트: {user.topics[0]?.title}
+              최근프로젝트: {user.projects[0]?.title}
             </Text>
           </Text>
           <Button
@@ -44,7 +44,7 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
           </Button>
 
           <Collapse in={opened}>
-            {user.topics.map((project, index) => (
+            {user.projects.map((project, index) => (
               <div key={index} style={{ marginBottom: '1rem' }}>
                 <Text size="lg" component="span">
                   {project.title}

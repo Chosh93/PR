@@ -19,9 +19,9 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({ user, opened
         <Badge color="blue" size="lg">
           {user.jobObjective}
         </Badge>
-        <Text size="lg">{user.summary}</Text>
+        <Text size="lg">{user.introduction}</Text>
 
-        {user.topics.map((project, index) => (
+        {user.projects.map((project, index) => (
           <div key={index} style={{ marginTop: -10, marginBottom: '1rem', marginLeft: '12rem' }}>
             <Text size="lg">{project.title}</Text>
             <Text size="xs">기간: {project.period}</Text>
